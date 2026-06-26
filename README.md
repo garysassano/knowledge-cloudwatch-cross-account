@@ -1,8 +1,8 @@
-# CloudWatch Cross-Account Notes
+# Knowledge: CloudWatch Cross-Account
 
 Last updated: 2026-06-19
 
-This repo tracks the overlapping CloudWatch cross-account / cross-region options and the announcements behind them.
+Agent-oriented reference notes for overlapping CloudWatch cross-account / cross-region options and the announcements behind them.
 
 ## Contents
 
