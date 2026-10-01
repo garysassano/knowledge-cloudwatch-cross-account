@@ -2,13 +2,14 @@
 
 Last updated: 2026-10-01
 
-Agent-oriented reference notes for overlapping CloudWatch cross-account / cross-region options and the announcements behind them.
+Agent-oriented reference notes for overlapping CloudWatch cross-account / cross-region options and the announcements behind them. Maintenance rules for agents are in [AGENTS.md](AGENTS.md).
 
 ## Contents
 
 - [Approach Matrix](#approach-matrix)
 - [Current Feature Support](#current-feature-support)
 - [When To Use What](#when-to-use-what)
+- [AWS Names](#aws-names)
 - [Category Timelines](#category-timelines)
 - [Related But Not Core](#related-but-not-core)
 
@@ -31,14 +32,14 @@ Agent-oriented reference notes for overlapping CloudWatch cross-account / cross-
 | --- | --- | --- | --- |
 | Logs | ✅ | ✅ | ✅ via CW Centralization |
 | Metrics | ✅ | ✅ | ✅ via CW Centralization |
-| Traces | ✅ | ❌ | ✅ via CW Centralization, with Transaction Search in each source account |
+| Traces | ✅ | ⚠️ spans only: the `aws/spans` log group follows logs centralization when Transaction Search is on in every source account; documented only on the [Omni setup page](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/omni-set-up-omni-for-your-organization.html) | ✅ via CW Centralization, same Transaction Search requirement |
 | Application Signals services/SLOs | ✅ | ❌ | Not documented; Omni has its own application map |
 | Application Insights applications | ✅ | ❌ | Not documented |
 | Internet Monitor monitors | ✅ | ❌ | Not documented |
 | Cross-region | ❌ | ✅ | ✅ via CW Centralization |
 | Central owned copy | ❌ | ✅ | ✅ via CW Centralization |
 
-CW Centralization overlaps with CW OAM for logs and metrics, but does not currently cover traces or the broader application-observability resources. AWS describes these options as complementary. CW Omni does not use CW OAM; its cross-account view is exactly what CW Centralization copies into the space's account and region.
+CW Centralization overlaps with CW OAM for logs and metrics. It covers traces only as spans carried by logs centralization, and does not cover the broader application-observability resources; AWS guidance still points to CW OAM for cross-account trace visibility. AWS describes these options as complementary. CW Omni does not use CW OAM; its cross-account view is exactly what CW Centralization copies into the space's account and region.
 
 ## When To Use What
 
@@ -51,6 +52,17 @@ CW Centralization overlaps with CW OAM for logs and metrics, but does not curren
 | Existing CloudWatch account/region selector dashboards | Migrate away from CW Console (legacy); use CW OAM and/or CW Centralization depending on data ownership needs |
 | One sign-in URL and AI-assisted investigation across the organization | CW Omni on top of CW Centralization |
 | Custom log streaming to Kinesis, Firehose, Lambda, or downstream systems | Account-level subscription filters |
+
+## AWS Names
+
+AWS documentation does not use this repo's category names. Map them before searching or citing.
+
+| Category | AWS docs / console name | API / CLI | CloudFormation |
+| --- | --- | --- | --- |
+| CW Console (legacy) | "Cross-account cross-Region CloudWatch console" | None; IAM role assumption (`CloudWatch-CrossAccountSharingRole`) | None dedicated; IAM roles only |
+| CW OAM | "CloudWatch cross-account observability"; "Observability Access Manager"; monitoring and source accounts | `oam` (`CreateSink`, `CreateLink`) | `AWS::Oam::Sink`, `AWS::Oam::Link` |
+| CW Centralization | "Cross-account cross-Region log centralization" / "metrics centralization"; "centralization rules" | `observabilityadmin` (`CreateCentralizationRuleForOrganization`) | `AWS::ObservabilityAdmin::OrganizationCentralizationRule` |
+| CW Omni | "Amazon CloudWatch Omni"; "Organization domain", "space", "CloudWatch Dataset" | Not verified | Not verified |
 
 ## Category Timelines
 

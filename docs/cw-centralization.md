@@ -21,4 +21,6 @@ Managed copying of logs or metrics into a destination account/region using AWS O
 | Destination account/region | Where copied telemetry is stored. |
 | `@aws.account` / `@aws.region` | Source metadata added to centralized telemetry. |
 | `AWSObservabilityAdminLogsCentralizationServiceRolePolicy` | Logs centralization service-linked role policy. |
+| `AWS::ObservabilityAdmin::OrganizationCentralizationRule` | CloudFormation resource for a centralization rule. |
+| `aws/spans` log group | Spans stored by Transaction Search; centralized with logs when Transaction Search is on in every source account, per the CW Omni setup docs. |
 | Tag propagation setting | Rule-level option that copies source log group tags to the destination log group and keeps them in sync. |
