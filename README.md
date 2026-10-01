@@ -1,6 +1,6 @@
 # Knowledge: CloudWatch Cross-Account
 
-Last updated: 2026-08-20
+Last updated: 2026-10-01
 
 Agent-oriented reference notes for overlapping CloudWatch cross-account / cross-region options and the announcements behind them.
 
@@ -65,8 +65,11 @@ These are not fourth/fifth base models. They are related CloudWatch capabilities
 
 | Date | Item | AWS News | AWS Blog | AWS Docs | Notes |
 | --- | --- | --- | --- | --- | --- |
+| 2015-08 | CloudWatch Logs cross-account subscriptions | Not found | Not found | [Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CrossAccountSubscriptions.html) | Origin of `AWS::Logs::Destination`: receiver-owned destination wrapping a Kinesis stream (later Firehose), targeted by sender subscription filters. AWS News page retired; listed in the [AWS Week in Review, 2015-08-10](https://aws.amazon.com/blogs/aws/aws-week-in-review-august-10-2015/). |
+| 2022-01-05 | Organizations support for cross-account Logs subscriptions | [News](https://aws.amazon.com/about-aws/whats-new/2022/01/amazon-cloudwatch-logs-aws-organizations-subscriptions/) | Not found | [Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CrossAccountSubscriptions.html) | Destination access policies can use `aws:PrincipalOrgID` / `aws:PrincipalOrgPath` instead of account lists. |
 | 2024-01-11 | CloudWatch Logs account-level subscription filters | [News](https://aws.amazon.com/about-aws/whats-new/2024/01/amazon-cloudwatch-logs-account-level-subscription-filter/) | Not found | [Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters-AccountLevel.html) | DIY/custom log streaming to Kinesis Data Streams, Firehose, or Lambda. |
 | 2025-11-21 | Database Insights cross-account cross-region monitoring | [News](https://aws.amazon.com/about-aws/whats-new/2025/11/cloudwatch-database-insights-cross-account-region-monitoring/) | Not found | [Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Database-Insights-Cross-Account-Cross-Region.html) | Product-specific console capability. Requires both CW OAM and CW Console (legacy) setup first. |
+| 2026-09-23 | CloudWatch Omni GA | [News](https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-cloudwatch-omni-ai/) | Not found | [Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-omni.html) | AI-first observability experience. Spaces in a central account show telemetry across AWS accounts, regions, and Azure. Launched in us-east-1, us-west-2, and eu-west-1. Candidate for its own category once its cross-account mechanism is documented. |
 
 Database Insights cross-account cross-region is not its own base model. AWS docs say it requires:
 
