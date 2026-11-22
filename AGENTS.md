@@ -19,4 +19,4 @@ This repo is a source of truth that AI agents use to choose between overlapping 
 
 ## Style
 
-Write one sentence or paragraph per line and never hard-wrap prose. Prettier owns markdown formatting.
+Write one sentence or paragraph per line and never hard-wrap prose. Biome formats Markdown (`biome check --write .`).
